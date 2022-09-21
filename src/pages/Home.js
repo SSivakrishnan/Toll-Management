@@ -62,7 +62,7 @@ function Home() {
   return (
     <section>
         <div className='header'>
-             <h2>Toll entries / Vehicle entries</h2> 
+             <h2>Toll entries / Vehicle entries by siva</h2> 
              <div className='filter_icon' >
              <i className="fa fa-filter" onClick={()=>setFilterActive(!filterActive)}></i>
              {
