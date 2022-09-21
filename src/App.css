@@ -1,6 +1,7 @@
 
 *{
   outline: none !important;
+  font-family: monospace;
   }
 .App >h1{
   border-bottom: solid #f1f1f1 2px;
@@ -24,7 +25,8 @@ button{
 }
 .form_field{
   max-width: 100%;
-  margin: 20px 0;
+  margin: 25px 0;
+  position: relative;
 }
 .form_field label{
   font-size: 16px;
@@ -37,11 +39,20 @@ button{
   border-radius: 5px;
 }
 .form_field_row{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
   justify-content: space-evenly;
 }
-.form_field_row select,.form_field_row input{
-  width: 30%;
+.form_field_row>div{
+  width: 100%;
+  position: relative;
+}
+.form_field_row select{
+  width: 100%;
+}
+.form_field_row input{
+  width: 90%;
 }
 .header{
   display: grid;
@@ -88,4 +99,11 @@ button{
 .search_bar input{
   border: transparent;
   padding: 0 10px;
+}
+.err_msg{
+  color: red;
+  position: absolute;
+  font-size: 12px;
+  bottom: -30px;
+  /* transform: translate(-35%,220%); */
 }

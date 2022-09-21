@@ -66,7 +66,7 @@ function Home() {
                
              </div>
         </div>
-        <Table/>
+        <Table head={table_head} datas={table_data}/>
 
         <AddVehicleEntry addVehiclePopup={addVehiclePopup} setAddVehiclePopup={setAddVehiclePopup}/>
         <AddNewToll addNewTollPopup={addNewTollPopup} setAddNewTollPopup={setAddNewTollPopup}/>

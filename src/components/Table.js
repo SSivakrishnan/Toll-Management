@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
-function Table() {
+function Table({head,datas,search,searchfield}) {
    
-    console.log(Object.keys(table_data[0]))
+    console.log('searchfield',)
+
+    const filteredValue=useMemo(()=>{
+        return datas.filter((data)=>{
+            return search?data[searchfield].toLowerCase().includes(search.toLowerCase()):true
+        })
+    },[search,searchfield])
+
   return (
     <table className='table_container'>
         <thead>
             <tr>
                 {
-                  table_head.map((head,i)=>(
+                  head.map((head,i)=>(
                     <td key={i}>{head}</td>
                   ))  
                 }
@@ -17,15 +24,19 @@ function Table() {
         </thead>
         <tbody>
             {
-                table_data.map((data,i)=>(
+                filteredValue.length>0?filteredValue.map((data,i)=>(
                     <tr key={i}>
                         {
-                            Object.keys(table_data[0]).map(key=>(
+                            Object.keys(datas[0]).map(key=>(
                                 <td>{data[key]}</td>
                             ))
                         }
                     </tr>
-                ))
+                )):(
+                    <tr>
+                         <td style={{textAlign:'center'}} colSpan={Object.keys(datas[0]).length}>Toll not found</td> 
+                                           </tr>
+                )
             }
         </tbody>
     </table>
