@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-function Table({head,datas,search,searchfield}) {
+function Table({head,datas,search,searchfield,deleteList}) {
    
     console.log('searchfield')
     const filteredValue=useMemo(()=>{
@@ -8,6 +8,10 @@ function Table({head,datas,search,searchfield}) {
             return search?data[searchfield].toLowerCase().includes(search.toLowerCase()):true
         })
     },[datas,search,searchfield])
+
+    const deleteRow=(data)=>{
+        console.log(data)
+    }
 
   return (
     <table className='table_container'>
@@ -29,6 +33,11 @@ function Table({head,datas,search,searchfield}) {
                             Object.keys(datas[0]).map(key=>(
                                 <td>{data[key]}</td>
                             ))
+                        }
+                        {
+                            deleteList&&(
+                                <td onClick={()=>deleteRow(data)}><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            )
                         }
                     </tr>
                 )):(

@@ -102,7 +102,7 @@ function AllTolls() {
         </div>
         {
             tableData&&(
-                <Table head={table_head} datas={tableData} search={searchToll} searchfield="toll_name"/>
+                <Table head={table_head} datas={tableData} search={searchToll} searchfield="toll_name" deleteList={true}/>
             )
         }
        
