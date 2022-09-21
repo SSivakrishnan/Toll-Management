@@ -69,6 +69,7 @@ button{
 }
 .filter_icon{
   cursor: pointer;
+  position: relative;
 }
 .table_container{
   width: 100%;
@@ -106,4 +107,27 @@ button{
   font-size: 12px;
   bottom: -30px;
   /* transform: translate(-35%,220%); */
+}
+.tollname_filter{
+  position: absolute;
+  width: 100px;
+  height: 130px;
+  overflow: auto;
+  background-color: #fff;
+  left: -25px;
+  top: 40px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.tollname_filter .filter_list{
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+}
+.tollname_filter .filter_list:hover{
+  background-color: #f1f1f1;
+  
 }

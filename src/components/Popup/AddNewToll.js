@@ -3,9 +3,8 @@ import useForm from '../../hooks/useForm'
 import Modal from '../Modal'
 
 function AddNewToll({addNewTollPopup,setAddNewTollPopup}) {
-    const tollEntries={   
-    }
-    const [values,errors,onChange,onSubmit] = useForm(dataAdded,tollEntries,validate)
+  
+    const [values,errors,onChange,onSubmit] = useForm(dataAdded,{},validate)
     
     const [vehicleTypes,setVehicleTypes] = useState([
         'Car/Jeep/Van',
@@ -13,14 +12,40 @@ function AddNewToll({addNewTollPopup,setAddNewTollPopup}) {
         'Truck/Bus',
         'Heavy vehicle',
     ])
-    const [selectedVehicle,setSelectedVehicle]=useState([])
 
     function dataAdded(){
         setAddNewTollPopup(false)
-        localStorage.setItem('toll_list',JSON.stringify([...(JSON.parse(localStorage.getItem('toll_list'))??[]),values]))
+        for(let i=1;i<5;i++){
+          var car_jeep_van;
+          var lcv;
+          var truck_bus;
+          var heavy_vehicle;
+          
+          if(values['vehicle_type_'+i]==='Car/Jeep/Van'){
+              car_jeep_van=`${values['single_journey_'+i]}/${values['return_journey_'+i]}`
+          }
+          if(values['vehicle_type_'+i]==='LCV'){
+              lcv=`${values['single_journey_'+i]}/${values['return_journey_'+i]}`
+          }
+          if(values['vehicle_type_'+i]==='Truck/Bus'){
+              truck_bus=`${values['single_journey_'+i]}/${values['return_journey_'+i]}`
+          }
+          if(values['vehicle_type_'+i]==='Heavy vehicle'){
+              heavy_vehicle=`${values['single_journey_'+i]}/${values['return_journey_'+i]}`
+          }
+      }
+      const newData={
+        //_id:new Date().valueOf(),
+        toll_name:values.toll_name,
+        car_jeep_van:car_jeep_van,
+        lcv:lcv,
+        truck_bus:truck_bus,
+        heavy_vehicle:heavy_vehicle,
+    }
+        localStorage.setItem('toll_list',JSON.stringify([...(JSON.parse(localStorage.getItem('toll_list'))??[]),newData]))
         console.log('vall success')
     }
-    function validate(){
+    function validate(values){
         let errors={}
         if(!values?.['toll_name']?.trim()?.length>0){
             errors['toll_name']="Enter Toll name"
@@ -89,6 +114,7 @@ function AddNewToll({addNewTollPopup,setAddNewTollPopup}) {
             <div className='form_field form_field_row'>
             <div>
             <select id={'vehicle_type_'+(i+1)} name={'vehicle_type_'+(i+1)} onChange={onChange}>
+              <option selected disabled>Select Vehicle</option>
               {
                 vehicleTypes.map((vehicle,i)=>(
                     <option className={'vehicle'+i} key={i} value={vehicle}>{vehicle}</option>

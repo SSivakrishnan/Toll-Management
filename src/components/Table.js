@@ -2,13 +2,12 @@ import React, { useMemo } from 'react'
 
 function Table({head,datas,search,searchfield}) {
    
-    console.log('searchfield',)
-
+    console.log('searchfield')
     const filteredValue=useMemo(()=>{
         return datas.filter((data)=>{
             return search?data[searchfield].toLowerCase().includes(search.toLowerCase()):true
         })
-    },[search,searchfield])
+    },[datas,search,searchfield])
 
   return (
     <table className='table_container'>

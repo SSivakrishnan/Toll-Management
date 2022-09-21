@@ -16,36 +16,36 @@ function AllTolls() {
 
     useEffect(()=>{
         if(localStorage.getItem('toll_list')){
-       let table_data=JSON.parse(localStorage.getItem('toll_list')).reduce((result,toll)=>{
-        console.log('logg',result,toll)
-            for(let i=1;i<5;i++){
-                var car_jeep_van;
-                var lcv;
-                var truck_bus;
-                var heavy_vehicle;
+       let table_data=JSON.parse(localStorage.getItem('toll_list'))
+    //    .reduce((result,toll)=>{
+    //     console.log('logg',result,toll)
+    //         for(let i=1;i<5;i++){
+    //             var car_jeep_van;
+    //             var lcv;
+    //             var truck_bus;
+    //             var heavy_vehicle;
                 
-                if(toll['vehicle_type_'+i]==='Car/Jeep/Van'){
-                    car_jeep_van=`${toll['single_journey_'+i]}/${toll['return_journey_'+i]}`
-                }
-                if(toll['vehicle_type_'+i]==='LCV'){
-                    lcv=`${toll['single_journey_'+i]}/${toll['return_journey_'+i]}`
-                }
-                if(toll['vehicle_type_'+i]==='Truck/Bus'){
-                    truck_bus=`${toll['single_journey_'+i]}/${toll['return_journey_'+i]}`
-                }
-                if(toll['vehicle_type_'+i]==='Heavy vehicle'){
-                    heavy_vehicle=`${toll['single_journey_'+i]}/${toll['return_journey_'+i]}`
-                }
-            }
-            return [...result,{
-                toll_name:toll.toll_name,
-                car_jeep_van:car_jeep_van,
-                lcv:lcv,
-                truck_bus:truck_bus,
-                heavy_vehicle:heavy_vehicle,
-            }]
-            
-        },[])
+    //             if(toll['vehicle_type_'+i]==='Car/Jeep/Van'){
+    //                 car_jeep_van=`${toll['single_journey_'+i]}/${toll['return_journey_'+i]}`
+    //             }
+    //             if(toll['vehicle_type_'+i]==='LCV'){
+    //                 lcv=`${toll['single_journey_'+i]}/${toll['return_journey_'+i]}`
+    //             }
+    //             if(toll['vehicle_type_'+i]==='Truck/Bus'){
+    //                 truck_bus=`${toll['single_journey_'+i]}/${toll['return_journey_'+i]}`
+    //             }
+    //             if(toll['vehicle_type_'+i]==='Heavy vehicle'){
+    //                 heavy_vehicle=`${toll['single_journey_'+i]}/${toll['return_journey_'+i]}`
+    //             }
+    //         }
+    //         return [...result,{
+    //             toll_name:toll.toll_name,
+    //             car_jeep_van:car_jeep_van,
+    //             lcv:lcv,
+    //             truck_bus:truck_bus,
+    //             heavy_vehicle:heavy_vehicle,
+    //         }]            
+    //     },[])
         setTableData(table_data)
         console.log('Toll list changed......',table_data)
     }
