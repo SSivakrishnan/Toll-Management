@@ -1,9 +1,9 @@
 import React,{memo} from 'react'
 import Modal from '../Modal'
 
-function AddVehicleEntry(props) {
+function AddVehicleEntry({addVehiclePopup,setAddVehiclePopup}) {
   return (
-    <Modal open={props.addNewTollPopup} onClose={()=>props.setAddNewTollPopup(false)}>
+    <Modal open={addVehiclePopup} onClose={()=>setAddVehiclePopup(false)}>
     <h2>Add New Entry</h2>
     <div className='form_field'>
         <label>Select toll name*</label>

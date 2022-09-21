@@ -8,6 +8,38 @@ function Home() {
     const [searchVehicle,setSearchVehicle] = useState()
     const [addVehiclePopup,setAddVehiclePopup] = useState(false)
     const [addNewTollPopup,setAddNewTollPopup] = useState(false)
+
+    const table_head=[
+        'vehicle Type',
+        'vehicle Number',
+        'Date/Time',
+        'Toll Name',
+        'Tarief',
+    ]
+    const table_data=[
+        {
+            vehicle_type:'car',
+            vehicle_number:'TN97H88',
+            date_time:'93/32/32 23:23:33',
+            toll_name:'super',
+            tarief:'60',
+        },
+        {
+            vehicle_type:'car',
+            vehicle_number:'TN97H88',
+            date_time:'93/32/32 23:23:33',
+            toll_name:'super',
+            tarief:'60',
+        },
+        {
+            vehicle_type:'car',
+            vehicle_number:'TN97H88',
+            date_time:'93/32/32 23:23:33',
+            toll_name:'super',
+            tarief:'630',
+        },
+        
+    ]
   return (
     <section>
         <div className='header'>

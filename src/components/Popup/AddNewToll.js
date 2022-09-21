@@ -1,11 +1,10 @@
 import React,{memo} from 'react'
 import Modal from '../Modal'
 
-function AddNewToll({addVehiclePopup,setAddVehiclePopup}) {
-    console.log('newtollll',addVehiclePopup)
+function AddNewToll({addNewTollPopup,setAddNewTollPopup}) {
   return (
     
-    <Modal open={addVehiclePopup} onClose={()=>setAddVehiclePopup(false)} width={750}>
+    <Modal open={addNewTollPopup} onClose={()=>setAddNewTollPopup(false)} width={750}>
     <h2>Add New Toll</h2>
     <div className='form_field'>
         <label>Toll Name*</label>
