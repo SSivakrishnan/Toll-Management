@@ -17,7 +17,6 @@ function AddVehicleEntry({addVehiclePopup,setAddVehiclePopup}) {
 
     useEffect(()=>{
         if(values?.vehicle_type){
-            console.log('changing')
             setTariff(tollList?.find(toll=>toll.toll_name===values?.toll_name)?.[`${values?.['vehicle_type']?.toLowerCase()?.replaceAll('/','_')?.replaceAll(' ','_')}`]?.split('/')[0])
         }
     },[values.vehicle_type])
@@ -35,14 +34,11 @@ function AddVehicleEntry({addVehiclePopup,setAddVehiclePopup}) {
     
     function dataAdded(){
         setAddVehiclePopup(false)
-        console.log('getCurrentDate',getCurrentDate())
         localStorage.setItem('vehicle_entries',JSON.stringify([...(JSON.parse(localStorage.getItem('vehicle_entries'))??[]),{vehicle_type:values['vehicle_type'],vehicle_number:values['vehicle_number'],date:getCurrentDate(),toll_name:values['toll_name'],tariff}]))
         setTariff()
-        console.log('vall success',values)
     }
     function validate(values){
         let errors={}
-        console.log('vall')
         if(!values?.['toll_name']?.trim()?.length>0){
             errors['toll_name']="Select Toll name"
         }
@@ -61,10 +57,7 @@ function AddVehicleEntry({addVehiclePopup,setAddVehiclePopup}) {
         'Truck/Bus',
         'Heavy vehicle',
     ]
-    console.log('bb',new Date().valueOf())
-  // console.log('dsds',tollList?.find(toll=>toll.toll_name===values?.toll_name)[`${values['vehicle_type'].toLowerCase()?.replace('/','_')?.replace(' ','_')}`]||0)
-   // console.log('dsds',tollList?.find(toll=>toll.toll_name===values?.toll_name)?.[`${values?.['vehicle_type']?.toLowerCase()?.replaceAll('/','_')?.replaceAll(' ','_')}`]?.split('/')[0])
-    //
+
   return (
     <Modal open={addVehiclePopup} onClose={()=>setAddVehiclePopup(false)}>
     <h2>Add New Entry</h2>

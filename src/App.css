@@ -127,6 +127,10 @@ button{
   cursor: pointer;
 
 }
+.tollname_filter .active_filter_list{
+  background-color: #f1f1f1;
+
+}
 .tollname_filter .filter_list:hover{
   background-color: #f1f1f1;
   

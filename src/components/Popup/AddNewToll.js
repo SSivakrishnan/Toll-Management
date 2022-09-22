@@ -43,7 +43,6 @@ function AddNewToll({addNewTollPopup,setAddNewTollPopup}) {
         heavy_vehicle:heavy_vehicle,
     }
         localStorage.setItem('toll_list',JSON.stringify([...(JSON.parse(localStorage.getItem('toll_list'))??[]),newData]))
-        console.log('vall success')
     }
     function validate(values){
         let errors={}
@@ -81,7 +80,6 @@ function AddNewToll({addNewTollPopup,setAddNewTollPopup}) {
 
         return errors
     }
-    console.log("vall",values,errors)
 
     // function removeVehicle(e){
     //     // vehicleTypes.splice(1,1)

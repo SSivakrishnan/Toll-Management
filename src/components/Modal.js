@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Modal({open,children,onClose,top,left,bgdark,zindex,width,pxtop}) {
-    console.log('newtollll loo',open)
   if(!open) return null
     const overLayStyle={
         right:0,
@@ -34,8 +33,6 @@ function Modal({open,children,onClose,top,left,bgdark,zindex,width,pxtop}) {
         right:'30px',
         cursor:'pointer',
    }
-   
-   //// console.log("width",window.innerWidth)
     return (
         <div style={styling} className="modal_container">
         <div style={overLayStyle} onClick={onClose}></div>

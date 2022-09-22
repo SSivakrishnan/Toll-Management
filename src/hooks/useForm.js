@@ -7,7 +7,6 @@ function useForm(callback,initalValue={},validate) {
     setValues({...values,[e.target.name]:e.target.value})
   }
   function onSubmit(){
-    //  console.log('vall cb',Object.keys(validate(values)))
     if(Object.keys(validate(values)).length === 0){
         callback()
         setValues({})

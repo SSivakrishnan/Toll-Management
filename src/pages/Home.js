@@ -15,6 +15,8 @@ function Home() {
     const [tollList,setTollList] = useState()
     const [tariff,setTariff] = useState()
 
+    const [filterTollname,setFilterTollname] = useState()
+
     useEffect(()=>{
         let toll_list=JSON.parse(localStorage.getItem('toll_list'))
         setTollList(toll_list)
@@ -22,18 +24,17 @@ function Home() {
 
     useEffect(()=>{
         if(localStorage.getItem('vehicle_entries')){
-       let table_data=JSON.parse(localStorage.getItem('vehicle_entries'))
+        let table_data=JSON.parse(localStorage.getItem('vehicle_entries'))
         setTableData(table_data)
-        console.log('Toll list changed......',table_data)
     }
     },[localStorage.getItem('vehicle_entries')])
 
     const table_head=[
-        'vehicle Type',
-        'vehicle Number',
-        'Date/Time',
-        'Toll Name',
-        'Tarief',
+        'VEHICLE TYPE',
+        'VEHICLE NUMBER',
+        'DATE/TIME',
+        'TOLL NAME',
+        'TARIEF',
     ]
     const table_data=[
         {
@@ -62,15 +63,18 @@ function Home() {
   return (
     <section>
         <div className='header'>
-             <h2>Toll entries / Vehicle entries by siva</h2> 
+             <h2>Toll entries / Vehicle entries</h2> 
              <div className='filter_icon' >
              <i className="fa fa-filter" onClick={()=>setFilterActive(!filterActive)}></i>
              {
                 filterActive&&(
                     <div className='tollname_filter'>
+                        <div className={`filter_list ${(!filterTollname)&&'active_filter_list'}`} onClick={()=>setFilterTollname()}>
+                                All
+                                 </div>
                         {
-                            tollList?.map((toll)=>(
-                                <div className='filter_list' >
+                            tollList?.map((toll)=>( 
+                                <div className={`filter_list ${(filterTollname?.toll_name===toll?.toll_name)&&'active_filter_list'}`} onClick={()=>setFilterTollname(toll)}>
                                 {toll.toll_name}
                                  </div>
                             ))
@@ -102,11 +106,11 @@ function Home() {
                
              </div>
         </div>
-        {
-            tableData&&(
-                <Table head={table_head} datas={tableData} search={searchVehicle} searchfield="vehicle_number"/>
-            )
-        }
+        
+  
+                <Table head={table_head} datas={tableData} search={searchVehicle} searchfield="vehicle_number" filter={filterTollname?.toll_name} filterfield="toll_name"/>
+            
+        
 
         <AddVehicleEntry addVehiclePopup={addVehiclePopup} setAddVehiclePopup={setAddVehiclePopup}/>
         <AddNewToll addNewTollPopup={addNewTollPopup} setAddNewTollPopup={setAddNewTollPopup}/>
