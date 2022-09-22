@@ -26,7 +26,7 @@ function AddVehicleEntry({addVehiclePopup,setAddVehiclePopup}) {
     useEffect(()=>{
         if(values?.vehicle_type && values.vehicle_number){
             let fullTariff=tollList?.find(toll=>toll.toll_name === values?.toll_name)?.[`${values?.['vehicle_type']?.toLowerCase()?.replaceAll('/','_')?.replaceAll(' ','_')}`]?.split('/')
-            let isUserVisited=vehicleList.find((vehicle)=>vehicle.vehicle_number === values?.vehicle_number)
+            let isUserVisited=vehicleList?.find((vehicle)=>vehicle?.vehicle_number === values?.vehicle_number)
             console.log("valllllllll",isUserVisited)
             if(isUserVisited){
                 setTariff(fullTariff[1])
