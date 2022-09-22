@@ -125,7 +125,9 @@ button{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
+  font-size: 12px;
+  padding: 6px;
+  box-sizing: border-box;
 }
 .tollname_filter .active_filter_list{
   background-color: #f1f1f1;
