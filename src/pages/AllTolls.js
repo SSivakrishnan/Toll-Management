@@ -17,13 +17,13 @@ function AllTolls() {
         }
     },[localStorage.getItem('toll_list')])
  
-    const table_head=[
+    const table_head=Object.freeze([
         'TOLL NAME',
         'CAR/JEEP/VAN',
         'LCV',
         'TRUCK/BUS',
         'HEAVY VEHICLE',
-    ]
+    ])
 
     function deleteRow(row){
         let currentRow=tableData.filter((data)=>data.toll_name!==row.toll_name)

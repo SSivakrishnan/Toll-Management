@@ -26,14 +26,13 @@ function Home() {
     }
     },[localStorage.getItem('vehicle_entries')])
 
-    const table_head=[
+    const table_head=Object.freeze([
         'VEHICLE TYPE',
         'VEHICLE NUMBER',
         'DATE/TIME',
         'TOLL NAME',
         'TARIEF',
-    ]
-  
+    ]) 
   return (
     <section>
         <div className='header'>
