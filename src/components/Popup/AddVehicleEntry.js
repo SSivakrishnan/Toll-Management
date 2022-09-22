@@ -7,19 +7,36 @@ function AddVehicleEntry({addVehiclePopup,setAddVehiclePopup}) {
     const [values,errors,onChange,onSubmit] = useForm(dataAdded,{},validate)
 
     const [tollList,setTollList] = useState()
+    const [vehicleList,setVehicleList] = useState()
     const [tariff,setTariff] = useState()
 
     useEffect(()=>{
         let toll_list=JSON.parse(localStorage.getItem('toll_list'))
         setTollList(toll_list)
 
-    },[])
+    },[localStorage.getItem('toll_list')])
 
     useEffect(()=>{
-        if(values?.vehicle_type){
-            setTariff(tollList?.find(toll=>toll.toll_name===values?.toll_name)?.[`${values?.['vehicle_type']?.toLowerCase()?.replaceAll('/','_')?.replaceAll(' ','_')}`]?.split('/')[0])
+        if(localStorage.getItem('vehicle_entries')){
+        let table_data=JSON.parse(localStorage.getItem('vehicle_entries'))
+        setVehicleList(table_data)
+    }
+    },[localStorage.getItem('vehicle_entries')])
+
+    useEffect(()=>{
+        if(values?.vehicle_type && values.vehicle_number){
+            let fullTariff=tollList?.find(toll=>toll.toll_name === values?.toll_name)?.[`${values?.['vehicle_type']?.toLowerCase()?.replaceAll('/','_')?.replaceAll(' ','_')}`]?.split('/')
+            let isUserVisited=vehicleList.find((vehicle)=>vehicle.vehicle_number === values?.vehicle_number)
+            console.log("valllllllll",isUserVisited)
+            if(isUserVisited){
+                setTariff(fullTariff[1])
+            }else{
+                setTariff(fullTariff[0])
+            }
+           
+            //console.log("terrihhh",`${values?.['vehicle_type']?.toLowerCase()?.replaceAll('/','_')?.replaceAll(' ','_')}`)
         }
-    },[values.vehicle_type])
+    },[values.vehicle_type,values.vehicle_number])
 
     function getCurrentDate(){
         var currentdate = new Date(); 
