@@ -8,9 +8,7 @@ function AllTolls() {
     const [searchToll,setSearchToll] = useState()
     const [addVehiclePopup,setAddVehiclePopup] = useState(false)
     const [addNewTollPopup,setAddNewTollPopup] = useState(false)  
-    const [tableData,setTableData] = useState()
-
-    
+    const [tableData,setTableData] = useState()    
 
     useEffect(()=>{
         if(localStorage.getItem('toll_list')){
@@ -35,8 +33,7 @@ function AllTolls() {
   return (
     <section>
         <div className='header header_alltolls'>
-             <h2>Tollgate List </h2> 
-            
+             <h2>Tollgate List </h2>             
              <div className='search_bar'>
              <i className="fa fa-search" aria-hidden="true"></i>
              <input type='text' placeholder='Search a toll' onChange={(e)=>setSearchToll(e.target.value)}/>
@@ -52,12 +49,11 @@ function AllTolls() {
                 <button>
                     Back to vehicle logs
                 </button>
-                </Link>
-               
+                </Link>               
              </div>
         </div>
        
-                <Table head={table_head} datas={tableData} search={searchToll} searchfield="toll_name" deleteList={true} deleteRow={deleteRow}/>
+        <Table head={table_head} datas={tableData} search={searchToll} searchfield="toll_name" deleteList={true} deleteRow={deleteRow}/>
           
 
         <AddVehicleEntry addVehiclePopup={addVehiclePopup} setAddVehiclePopup={setAddVehiclePopup}/>

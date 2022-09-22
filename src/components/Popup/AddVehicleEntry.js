@@ -48,9 +48,9 @@ function AddVehicleEntry({addVehiclePopup,setAddVehiclePopup}) {
         if(!values?.['vehicle_number']?.trim()?.length>0){
             errors['vehicle_number']="Enter Vehicle Number"
         }
-
         return errors
     }
+    
     const vehicleType=[
         'Car/Jeep/Van',
         'LCV',

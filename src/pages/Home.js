@@ -9,12 +9,9 @@ function Home() {
     const [addVehiclePopup,setAddVehiclePopup] = useState(false)
     const [addNewTollPopup,setAddNewTollPopup] = useState(false)
     const [tableData,setTableData] = useState()
-
     const [filterActive,setFilterActive] = useState(false)
-
     const [tollList,setTollList] = useState()
     const [tariff,setTariff] = useState()
-
     const [filterTollname,setFilterTollname] = useState()
 
     useEffect(()=>{
@@ -36,30 +33,7 @@ function Home() {
         'TOLL NAME',
         'TARIEF',
     ]
-    const table_data=[
-        {
-            vehicle_type:'car',
-            vehicle_number:'TN97H88',
-            date_time:'93/32/32 23:23:33',
-            toll_name:'super',
-            tarief:'60',
-        },
-        {
-            vehicle_type:'car',
-            vehicle_number:'TN97H88',
-            date_time:'93/32/32 23:23:33',
-            toll_name:'super',
-            tarief:'60',
-        },
-        {
-            vehicle_type:'car',
-            vehicle_number:'TN97H88',
-            date_time:'93/32/32 23:23:33',
-            toll_name:'super',
-            tarief:'630',
-        },
-        
-    ]
+  
   return (
     <section>
         <div className='header'>
@@ -83,9 +57,7 @@ function Home() {
                     </div>
                 )
              }
-             </div>
-          
-           
+             </div>      
 
              <div className='search_bar'>
              <i className="fa fa-search" aria-hidden="true"></i>
@@ -108,7 +80,7 @@ function Home() {
         </div>
         
   
-                <Table head={table_head} datas={tableData} search={searchVehicle} searchfield="vehicle_number" filter={filterTollname?.toll_name} filterfield="toll_name"/>
+        <Table head={table_head} datas={tableData} search={searchVehicle} searchfield="vehicle_number" filter={filterTollname?.toll_name} filterfield="toll_name"/>
             
         
 

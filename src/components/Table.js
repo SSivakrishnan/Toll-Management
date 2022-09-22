@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 
-function Table({head,datas,search,searchfield,deleteList,deleteRow,filter,filterfield}) {
-   
+function Table({head,datas,search,searchfield,deleteList,deleteRow,filter,filterfield}) {   
   
     const filteredValue=useMemo(()=>{
         if(!datas){
@@ -15,7 +14,6 @@ function Table({head,datas,search,searchfield,deleteList,deleteRow,filter,filter
             return search?data[searchfield].toLowerCase().includes(search.toLowerCase()):true
         })
     },[datas,search,searchfield,filter,filterfield])
-
   
   return (
     <table className='table_container'>
@@ -51,7 +49,7 @@ function Table({head,datas,search,searchfield,deleteList,deleteRow,filter,filter
                 )):(
                     <tr>
                          <td style={{textAlign:'center'}} colSpan={head?.length}>Data Not Found</td> 
-                                           </tr>
+                    </tr>
                 )
             }
         </tbody>

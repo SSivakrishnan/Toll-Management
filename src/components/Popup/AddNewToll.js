@@ -81,21 +81,6 @@ function AddNewToll({addNewTollPopup,setAddNewTollPopup}) {
         return errors
     }
 
-    // function removeVehicle(e){
-    //     // vehicleTypes.splice(1,1)
-    //     // setVehicleTypes(vehicleTypes)
-    //     const selected_vehicle=selectedVehicle
-    //     selected_vehicle.push(e.target.value)
-    //     setSelectedVehicle(selected_vehicle)
-    //     selected_vehicle.forEach((vehicle)=>{
-    //         document.querySelector(`#vehicle_type_${+e.target.id.split('_')[2]+1} .vehicle${e.target.value}`).style.display='none'
-    //     })
-    //     console.log('called',`#vehicle_type_${+e.target.id.split('_')[2]+1} .vehicle${e.target.value}`,selectedVehicle)
-       
-    //     // if(e.target.name==='vehicle1'){
-
-    //     // }
-    // }
   return (
     
     <Modal open={addNewTollPopup} onClose={()=>setAddNewTollPopup(false)} width={750}>
@@ -134,41 +119,7 @@ function AddNewToll({addNewTollPopup,setAddNewTollPopup}) {
             ))
     }
       <p className='err_msg' style={{position:'relative',bottom:'0'}}>{errors['compare_vehicle']}</p>
-  
-    {/* <div className='form_field form_field_row'>
-    <select id='vehicle_type_2' name='vehicle_type_2' onChange={onChange}>
-          {
-            vehicleTypes.map((vehicle,i)=>(
-                <option className={'vehicle'+i} key={i} value={i}>{vehicle}</option>
-            ))            
-          }
-        </select>
-        <input type='text' placeholder='Single Journey' name='single_journey_2' onChange={onChange}/>
-        <input type='text' placeholder='Return Journey' name='return_journey_2' onChange={onChange}/>
-    </div>
-    <div className='form_field form_field_row'>
-    <select id='vehicle_type_3' name='vehicle_type_3' onChange={onChange}>
-          {
-            vehicleTypes.map((vehicle,i)=>(
-                <option className={'vehicle'+i} key={i} value={i}>{vehicle}</option>
-            ))            
-          }
-        </select>
-        <input type='text' placeholder='Single Journey' name='single_journey_3' onChange={onChange}/>
-        <input type='text' placeholder='Return Journey' name='return_journey_3' onChange={onChange}/>
-    </div>
-    <div className='form_field form_field_row'>
-    <select id='vehicle_type_4' name='vehicle_type_4' onChange={onChange}>
-          {
-            vehicleTypes.map((vehicle,i)=>(
-                <option className={'vehicle'+i} key={i} value={i}>{vehicle}</option>
-            ))            
-          }
-        </select>
-        <input type='text' placeholder='Single Journey' name='single_journey_4' onChange={onChange}/>
-        <input type='text' placeholder='Return Journey' name='return_journey_4' onChange={onChange}/>
-    </div> */}
-  
+    
     <button onClick={onSubmit}>Add Details</button>
 </Modal>
   )
